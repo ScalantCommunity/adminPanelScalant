@@ -3,6 +3,7 @@ import axios from 'axios'
 import { UserContext } from '../../Context/UserContext'
 import { useHistory } from 'react-router-dom'
 import toast from 'react-hot-toast'
+import Popup from 'reactjs-popup';
 const Dashboard = () => {
   const { user, setUser } = React.useContext(UserContext)
   const history = useHistory()
@@ -77,7 +78,10 @@ const Dashboard = () => {
           <button className="btn btn-ghost btn-xs" onClick={()=> history.push(`/edituser/${u._id}`)}>Edit User</button>
         </th>
         <th>
-          <button style={{backgroundColor:'#fff', color:'red', fontWeight:'600'}} className="btn btn-ghost btn-xs" onClick={()=>handleDelete(u._id)}>Remove</button>
+          <Popup trigger={<button  className="btn btn-ghost btn-xs">Remove</button>} position='top center' nested>
+            <div>Are you sure you want to delete {u.name}? </div>
+            <button className="btn btn-ghost btn-xs" style={{backgroundColor:'#fff', color:'red', fontWeight:'600'}} onClick={()=>handleDelete(u._id)}>Yes</button>
+          </Popup>
         </th>
       </tr>
       })}
