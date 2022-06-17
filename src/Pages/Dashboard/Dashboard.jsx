@@ -78,9 +78,10 @@ const Dashboard = () => {
           <button className="btn btn-ghost btn-xs" onClick={()=> history.push(`/edituser/${u._id}`)}>Edit User</button>
         </th>
         <th>
-          <Popup trigger={<button  className="btn btn-ghost btn-xs">Remove</button>} position='top center' nested>
-            <div>Are you sure you want to delete {u.name}? </div>
-            <button className="btn btn-ghost btn-xs" style={{backgroundColor:'#fff', color:'red', fontWeight:'600'}} onClick={()=>handleDelete(u._id)}>Yes</button>
+          <Popup trigger={<button  className="btn btn-ghost btn-xs">Remove</button>} nested>
+            <div style={{backgroundColor:'black', padding:'1rem', borderRadius:'20px', display: 'flex', flexDirection:'column', justifyContent: 'center', alignItems: 'center', gap:'0.5rem'}}>Are you sure you want to remove {u.name.split(' ')[0].toUpperCase()}? 
+            <button className="btn btn-ghost btn-block" style={{backgroundColor:'#fff', color:'red', fontWeight:'600'}} onClick={()=>handleDelete(u._id)}>Yes</button>
+            </div>
           </Popup>
         </th>
       </tr>
