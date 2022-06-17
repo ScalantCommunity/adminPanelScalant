@@ -33,11 +33,7 @@ const Dashboard = () => {
     {/* head */}
     <thead>
       <tr>
-        <th>
-          <label>
-            <input type="checkbox" className="checkbox" />
-          </label>
-        </th>
+        
         <th>Name</th>
         <th>Domain</th>
         <th>isTeamMember</th>
@@ -45,14 +41,10 @@ const Dashboard = () => {
         <th/>
       </tr>
     </thead>
-    <tbody>
+    <tbody >
       {allusers.map(u=>{
-        return <tr key={u._id}>
-        <th>
-          <label>
-            <input type="checkbox" className="checkbox" />
-          </label>
-        </th>
+        return <tr key={u._id} >
+        
         <td>
           <div className="flex items-center space-x-3">
             <div className="avatar">
@@ -90,7 +82,7 @@ const Dashboard = () => {
     {/* foot */}
     <tfoot>
       <tr>
-        <th />
+        
         <th>Name</th>
         <th>Domain</th>
         <th>isTeamMember</th>
