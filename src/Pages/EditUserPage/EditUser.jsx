@@ -19,7 +19,7 @@ const EditUser = () => {
   
   React.useEffect(()=>{
     const fetchUsers = async ()=>{
-      const {data} = await axios.get(`https://scalantformapi-dishant5570-gmailcom-scalant.vercel.app/api/user/${id}`)
+      const {data} = await axios.get(`https://lovely-carlsbad-caverns-40608.herokuapp.com/api/user/${id}`)
       setMember(data.user)
       setFormData({
         name:'',
