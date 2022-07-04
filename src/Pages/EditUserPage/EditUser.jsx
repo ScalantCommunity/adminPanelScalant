@@ -49,10 +49,10 @@ const EditUser = () => {
       isTeamMember: formData.isTeamMember===undefined? member.isTeamMember:formData.isTeamMember
     }
 
-   const res = await axios.put(`https://scalantformapi-dishant5570-gmailcom-scalant.vercel.app/api/user/${id}`, finalFormData)
+   const res = await axios.put(`https://lovely-carlsbad-caverns-40608.herokuapp.com/api/user/${id}`, finalFormData)
    console.log(res)
 
-   const {data} = await axios.get(`https://scalantformapi-dishant5570-gmailcom-scalant.vercel.app/api/user/${id}`)
+   const {data} = await axios.get(`https://lovely-carlsbad-caverns-40608.herokuapp.com/api/user/${id}`)
     setMember(data.user)
 
     setFormData({

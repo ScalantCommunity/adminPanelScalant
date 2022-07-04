@@ -10,7 +10,7 @@ const Login = () => {
 
   React.useEffect(() => {
     const fetchUsers = async ()=>{
-      const {data} = await axios.get('https://scalantformapi-dishant5570-gmailcom-scalant.vercel.app/api/images')
+      const {data} = await axios.get('https://lovely-carlsbad-caverns-40608.herokuapp.com/api/images')
       
       const users = data.map(u=> u.email)
       setAllUsers(users)
