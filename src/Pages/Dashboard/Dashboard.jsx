@@ -11,17 +11,17 @@ const Dashboard = () => {
 
   React.useEffect(() => {
     const fetchUsers = async ()=>{
-      const {data} = await axios.get('https://lovely-carlsbad-caverns-40608.herokuapp.com/api/images')
+      const {data} = await axios.get('https://cedar-chemist-350213.de.r.appspot.com/api/images')
       setAllUsers(data)
     } 
     fetchUsers()
   }, [])
 
   const handleDelete = async (id)=>{
-    const res = await axios.delete(`https://lovely-carlsbad-caverns-40608.herokuapp.com/api/user/${id}`)
+    const res = await axios.delete(`https://cedar-chemist-350213.de.r.appspot.com/api/user/${id}`)
     const {deletedUser} = res.data
 
-    const {data} = await axios.get('https://lovely-carlsbad-caverns-40608.herokuapp.com/api/images')
+    const {data} = await axios.get('https://cedar-chemist-350213.de.r.appspot.com/api/images')
     setAllUsers(data)
     toast.success(`Removed user ${deletedUser.name} Successfully!`)
   }
