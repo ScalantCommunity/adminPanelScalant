@@ -21,7 +21,7 @@ const Login = () => {
   const handleLogin = (e)=>{
     e.preventDefault()
     if(allusers.includes(email)){
-      if(password==='scalantadmin123'){
+      if(password=== import.meta.env.VITE_ADMIN_KEY){
         localStorage.setItem('user', JSON.stringify({email, password}));
         setUser({email, password})
       }
