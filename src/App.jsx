@@ -6,6 +6,8 @@ import { BrowserRouter as Router, Route, Redirect, Switch, Link} from 'react-rou
 import Dashboard from './Pages/Dashboard/Dashboard'
 import EditUser from './Pages/EditUserPage/EditUser'
 import { Toaster } from 'react-hot-toast';
+import { ExportToCsv } from 'export-to-csv';
+import axios from 'axios'
 
 const App = () => {
   const { user, setUser } = React.useContext(UserContext)
@@ -13,6 +15,27 @@ const App = () => {
   const handleLogout = ()=>{
     localStorage.removeItem('user');
     setUser(null)
+  }
+
+  const handleDownloadCsv = async ()=>{
+    const options = { 
+      fieldSeparator: ',',
+      quoteStrings: '"',
+      decimalSeparator: '.',
+      showLabels: true, 
+      showTitle: true,
+      title: 'My Awesome CSV',
+      useTextFile: false,
+      useBom: true,
+      useKeysAsHeaders: true,
+      // headers: ['Column 1', 'Column 2', etc...] <-- Won't work with useKeysAsHeaders present!
+    };
+   
+  const csvExporter = new ExportToCsv(options);
+   
+  const {data}=await axios.get('https://cedar-chemist-350213.de.r.appspot.com/api/images')
+  console.log(data)
+  csvExporter.generateCsv(data);
   }
 
   return (
@@ -26,6 +49,12 @@ const App = () => {
             Logout
           </button>
         </div>}
+        {user && <div style={{marginLeft:'1rem'}} className="flex-none">
+          <button className="btn" onClick={handleDownloadCsv}>
+            Download as CSV
+          </button>
+        </div>}
+
       </div>
 
     <div>

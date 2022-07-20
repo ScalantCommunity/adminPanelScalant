@@ -22,6 +22,7 @@ const EditUser = () => {
     const fetchUsers = async ()=>{
       const {data} = await axios.get(`https://cedar-chemist-350213.de.r.appspot.com/api/user/${id}`)
       setMember(data.user)
+      console.log(data.user)
       setFormData({
         name:'',
         email:'',
@@ -80,6 +81,12 @@ const EditUser = () => {
       {member=={} && <h1>Loading...</h1>}
       {member!={} && 
        <div style={{width:'80vw', display: 'flex', flexDirection:'column', gap:'1rem', marginBottom:'3rem'}}>
+        <div style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
+          <div style={{width:'12rem', height:'12rem', borderRadius:'50%', border:'solid 1px white', overflow:'hidden'}}>
+
+          <img src={member.photo} />
+          </div>
+        </div>
         <div className="form-control">
           <label className="input-group input-group-vertical">
             <span>Name</span>

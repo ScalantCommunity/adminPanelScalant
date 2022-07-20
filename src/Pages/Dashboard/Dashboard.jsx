@@ -8,11 +8,23 @@ const Dashboard = () => {
   const { user, setUser } = React.useContext(UserContext)
   const history = useHistory()
   const [allusers, setAllUsers] = React.useState([])
-
+  const [userDetails, setUserDetails] = React.useState({
+    total: 0,
+    teamMember:0,
+    notTeamMember:0
+  })
   React.useEffect(() => {
     const fetchUsers = async ()=>{
       const {data} = await axios.get('https://cedar-chemist-350213.de.r.appspot.com/api/images')
       setAllUsers(data)
+      
+    let teamMember = 0
+    let notTeamMember =0
+    data.forEach(user=>{
+      user.isTeamMember ? teamMember++ : notTeamMember++
+    })
+
+    setUserDetails({...userDetails, teamMember, notTeamMember, total: data.length})
     } 
     fetchUsers()
   }, [])
@@ -23,8 +35,11 @@ const Dashboard = () => {
 
     const {data} = await axios.get('https://cedar-chemist-350213.de.r.appspot.com/api/images')
     setAllUsers(data)
+    
     toast.success(`Removed user ${deletedUser.name} Successfully!`)
   }
+
+
 
   return (
     <div className='relative'>
@@ -34,7 +49,7 @@ const Dashboard = () => {
     <thead>
       <tr>
         
-        <th>Name</th>
+        <th>Name ( Total: <b>{userDetails.total}</b>, TeamMembers: <b>{userDetails.teamMember}</b>, notTeamMember: <b>{userDetails.notTeamMember}</b> )</th>
         <th>Domain</th>
         <th>isTeamMember</th>
         <th />
