@@ -10,7 +10,7 @@ const Login = () => {
 
   React.useEffect(() => {
     const fetchUsers = async ()=>{
-      const {data} = await axios.get('https://cedar-chemist-350213.de.r.appspot.com/api/images')
+      const {data} = await axios.get('https://apiscalant.live/api/images')
       
       const users = data.map(u=> u.email)
       setAllUsers(users)

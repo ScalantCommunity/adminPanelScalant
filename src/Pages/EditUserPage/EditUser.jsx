@@ -20,7 +20,7 @@ const EditUser = () => {
   
   React.useEffect(()=>{
     const fetchUsers = async ()=>{
-      const {data} = await axios.get(`https://cedar-chemist-350213.de.r.appspot.com/api/user/${id}`)
+      const {data} = await axios.get(`https://apiscalant.live/api/user/${id}`)
       setMember(data.user)
       console.log(data.user)
       setFormData({
@@ -53,10 +53,10 @@ const EditUser = () => {
       isTeamMember: formData.isTeamMember===undefined? member.isTeamMember:formData.isTeamMember
     }
 
-   const res = await axios.put(`https://cedar-chemist-350213.de.r.appspot.com/api/user/${id}`, finalFormData)
+   const res = await axios.put(`https://apiscalant.live/api/user/${id}`, finalFormData)
    console.log(res)
 
-   const {data} = await axios.get(`https://cedar-chemist-350213.de.r.appspot.com/api/user/${id}`)
+   const {data} = await axios.get(`https://apiscalant.live/api/user/${id}`)
    
     setMember(data.user)
 

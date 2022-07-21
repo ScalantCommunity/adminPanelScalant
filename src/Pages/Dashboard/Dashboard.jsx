@@ -15,7 +15,7 @@ const Dashboard = () => {
   })
   React.useEffect(() => {
     const fetchUsers = async ()=>{
-      const {data} = await axios.get('https://cedar-chemist-350213.de.r.appspot.com/api/images')
+      const {data} = await axios.get('https://apiscalant.live/api/images')
       setAllUsers(data)
       
     let teamMember = 0
@@ -30,10 +30,10 @@ const Dashboard = () => {
   }, [])
 
   const handleDelete = async (id)=>{
-    const res = await axios.delete(`https://cedar-chemist-350213.de.r.appspot.com/api/user/${id}`)
+    const res = await axios.delete(`https://apiscalant.live/api/user/${id}`)
     const {deletedUser} = res.data
 
-    const {data} = await axios.get('https://cedar-chemist-350213.de.r.appspot.com/api/images')
+    const {data} = await axios.get('https://apiscalant.live/api/images')
     setAllUsers(data)
     
     toast.success(`Removed user ${deletedUser.name} Successfully!`)

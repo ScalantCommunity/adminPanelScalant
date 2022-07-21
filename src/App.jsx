@@ -33,7 +33,7 @@ const App = () => {
    
   const csvExporter = new ExportToCsv(options);
    
-  const {data}=await axios.get('https://cedar-chemist-350213.de.r.appspot.com/api/images')
+  const {data}=await axios.get('https://apiscalant.live/api/images')
   console.log(data)
   csvExporter.generateCsv(data);
   }
